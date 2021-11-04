@@ -19,6 +19,13 @@ extension URL {
         guard let queryItems = components.queryItems else { return path }
         return path + "?" + queryItems.map(\.urlValue).joined(separator: "&")
     }
+    
+    func updatingHost(_ host: String, scheme: String) -> URL {
+        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)!
+        components.host = host
+        components.scheme = scheme
+        return components.url!
+    }
 }
 
 extension URL: Comparable {

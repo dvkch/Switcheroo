@@ -16,6 +16,18 @@ class PathStatus: NSObject {
         self.code = code
         super.init()
     }
+    
+    init(response: HTTPURLResponse?, error: Error?) {
+        self.code = response?.statusCode ?? 0
+        switch code {
+        case 100..<300:
+            badge = .success
+        case 300..<400:
+            badge = .warning
+        default:
+            badge = .error
+        }
+    }
 
     // MARK: Types
     @objc enum Badge: Int {

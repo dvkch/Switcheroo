@@ -25,10 +25,10 @@ class ViewController: NSViewController {
         get { representedObject as! Sitemap }
         set { representedObject = newValue }
     }
-    private var isRunning: Bool = false {
+    private var statusController: StatusController? {
         didSet {
-            hostTextField.isEnabled = !isRunning
-            startButton.isEnabled = !isRunning
+            hostTextField.isEnabled = statusController == nil
+            startButton.isEnabled = statusController == nil
         }
     }
 
@@ -39,27 +39,38 @@ class ViewController: NSViewController {
 
     // MARK: Actions
     @IBAction private func textfieldDidReturn(sender: AnyObject?) {
+        guard !hostTextField.stringValue.isEmpty else { return }
         startButtonTap(sender: sender)
     }
 
     @IBAction private func startButtonTap(sender: AnyObject?) {
-        guard !isRunning else { return }
+        guard statusController == nil else { return }
 
         guard let url = URL(string: hostTextField.stringValue),
-              let host = url.host,
-              ["http", "https"].contains(url.scheme?.lowercased() ?? "")
+              let host = url.host, let scheme = url.scheme,
+              ["http", "https"].contains(scheme.lowercased())
         else {
             NSAlert(error: AppError.invalidHost).runModal()
             return
         }
         
-        isRunning = true
-        
+        sitemap.clearStatuses()
+        statusController = StatusController(urls: sitemap.urls, scheme: scheme, host: host, delegate: self)
+        statusController?.start()
     }
 
     // MARK: Content
     private func updateContent() {
         tableView.reloadData()
+    }
+}
+
+extension ViewController: StatusControllerDelegate {
+    func statusController(_ statusController: StatusController, didUpdateStatusFor url: URL, status: PathStatus) {
+        sitemap.setStatus(status, for: url)
+    }
+    func statusControllerDidFinish(_ statusController: StatusController) {
+        self.statusController = nil
     }
 }
 
