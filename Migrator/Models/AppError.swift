@@ -8,13 +8,15 @@
 import Foundation
 
 enum AppError: Int, Error {
-    case invalidHost
+    case invalidHost, invalidFileType, noSaveSupport
 }
 
 extension AppError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .invalidHost: return "Invalid host"
+        case .invalidHost:      return "Invalid host"
+        case .invalidFileType:  return "Invalid file type"
+        case .noSaveSupport:    return "Saving is not supported"
         }
     }
 }

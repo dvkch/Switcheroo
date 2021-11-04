@@ -10,9 +10,11 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    override init() {
+        super.init()
+        _ = DocumentController.init() // force use of our subclass as early as possible
+    }
     
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
