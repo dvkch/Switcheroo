@@ -14,6 +14,7 @@ Currently supported features:
 - cleanup the imported file
 - enter your new website's temporary domain
 - check the status of all page paths
+- export the status for each path as a CSV file
 
 Planned features, if time permits:
 
