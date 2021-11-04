@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         representedObject = representedObject ?? Sitemap()
+        statusController = nil
     }
 
     // MARK: Properties
@@ -28,13 +29,15 @@ class ViewController: NSViewController {
     private var statusController: StatusController? {
         didSet {
             hostTextField.isEnabled = statusController == nil
-            startButton.isEnabled = statusController == nil
+            startButton.title = statusController == nil ? "Start" : "Stop"
+            progressView.isHidden = statusController == nil
         }
     }
 
     // MARK: Views
     @IBOutlet private var hostTextField: NSTextField!
     @IBOutlet private var startButton: NSButton!
+    @IBOutlet private var progressView: NSProgressIndicator!
     @IBOutlet private var tableView: NSTableView!
 
     // MARK: Actions
@@ -44,31 +47,88 @@ class ViewController: NSViewController {
     }
 
     @IBAction private func startButtonTap(sender: AnyObject?) {
-        guard statusController == nil else { return }
+        if statusController != nil {
+            statusController?.stop()
+            return
+        }
 
-        guard let url = URL(string: hostTextField.stringValue),
-              let host = url.host, let scheme = url.scheme,
+        var urlString = hostTextField.stringValue
+        if !urlString.hasPrefix("http") {
+            urlString = "https://" + urlString
+        }
+        guard let url = URL(string: urlString),
+              let host = url.host,
+              let scheme = url.scheme,
               ["http", "https"].contains(scheme.lowercased())
         else {
             NSAlert(error: AppError.invalidHost).runModal()
             return
         }
-        
+
+        sitemap.updateDomain(scheme + "://" + host)
         sitemap.clearStatuses()
+        updateContent()
+
         statusController = StatusController(urls: sitemap.urls, scheme: scheme, host: host, delegate: self)
         statusController?.start()
+        progressView.doubleValue = 0
+    }
+    
+    @IBAction private func removeSelectedItem(sender: AnyObject?) {
+        guard tableView.selectedRow >= 0 else { return }
+        let removedIndex = tableView.selectedRow
+        sitemap.removeItem(at: removedIndex)
+        tableView.removeRows(at: IndexSet(integer: removedIndex), withAnimation: .slideUp)
+
+        if removedIndex - 1 >= 0 && tableView.numberOfRows > 0 {
+            tableView.selectRowIndexes(IndexSet(integer: removedIndex - 1), byExtendingSelection: false)
+        }
+        else if tableView.numberOfRows > 0 {
+            tableView.selectRowIndexes(IndexSet(integer: removedIndex), byExtendingSelection: false)
+        }
     }
 
     // MARK: Content
     private func updateContent() {
+        reloadDomain()
+        reloadTableView()
+    }
+
+    func reloadTableView() {
+        let selectedRow = tableView.selectedRow
         tableView.reloadData()
+        
+        if selectedRow >= 0 && selectedRow < sitemap.urls.count {
+            tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+        }
+    }
+    
+    func reloadDomain() {
+        hostTextField.stringValue = sitemap.domain ?? ""
+    }
+}
+
+extension ViewController: NSMenuItemValidation {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        switch menuItem.action {
+        case #selector(removeSelectedItem(sender:)):
+            return tableView.selectedRow >= 0
+        default:
+            return false
+        }
     }
 }
 
 extension ViewController: StatusControllerDelegate {
     func statusController(_ statusController: StatusController, didUpdateStatusFor url: URL, status: PathStatus) {
         sitemap.setStatus(status, for: url)
+        progressView.doubleValue = sitemap.percentOfDeterminedStatuses * 100
+        
+        if let index = sitemap.urls.firstIndex(of: url) {
+            tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 1))
+        }
     }
+
     func statusControllerDidFinish(_ statusController: StatusController) {
         self.statusController = nil
     }

@@ -13,7 +13,7 @@ class Sitemap: NSDocument {
     override init() {
         super.init()
         self.isTransient = true
-        self.hasUndoManager = false
+        self.hasUndoManager = true
     }
 
     override class var autosavesInPlace: Bool {
@@ -93,5 +93,49 @@ class Sitemap: NSDocument {
     
     func setStatus(_ status: PathStatus, for url: URL) {
         statuses[url] = status
+    }
+    
+    // MARK: Modifications
+    private func add(_ item: SitemapItem, at index: Int? = nil) -> Int {
+        isTransient = false
+        updateChangeCount(.changeDone)
+        
+        let index = index ?? items.count - 1
+        items.insert(item, at: index)
+
+        undoManager?.registerUndo(withTarget: self, handler: { selfTarget in
+            selfTarget.removeItem(at: index)
+            selfTarget.contentViewController?.reloadTableView()
+        })
+        undoManager?.setActionName("Add item")
+
+        return index
+    }
+
+    func removeItem(at index: Int) {
+        isTransient = false
+        updateChangeCount(.changeDone)
+
+        let removedItem = items.remove(at: index)
+
+        undoManager?.registerUndo(withTarget: self, handler: { selfTarget in
+            _ = selfTarget.add(removedItem, at: index)
+            selfTarget.contentViewController?.reloadTableView()
+        })
+        undoManager?.setActionName("Remove item")
+    }
+    
+    func updateDomain(_ domain: String?) {
+        guard domain != self.domain else { return }
+
+        let oldValue = self.domain
+        self.domain = domain
+        updateChangeCount(.changeDone)
+        
+        undoManager?.registerUndo(withTarget: self, handler: { selfTarget in
+            selfTarget.updateDomain(oldValue)
+            selfTarget.contentViewController?.reloadDomain()
+        })
+        undoManager?.setActionName("Update new domain")
     }
 }
