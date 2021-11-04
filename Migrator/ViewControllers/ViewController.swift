@@ -87,6 +87,25 @@ class ViewController: NSViewController {
             tableView.selectRowIndexes(IndexSet(integer: removedIndex), byExtendingSelection: false)
         }
     }
+    
+    @IBAction private func exportAsCSV(sender: AnyObject?) {
+        var content = [String]()
+        content.append("Path;Status")
+        sitemap.urls.forEach { url in
+            content.append("\(url.pathWithQuery);\(sitemap.status(for: url)?.csvStatus ?? "")")
+        }
+        
+        let panel = NSSavePanel()
+        panel.directoryURL = sitemap.fileURL?.deletingLastPathComponent()
+        panel.allowsOtherFileTypes = false
+        panel.allowedFileTypes = ["csv"]
+        panel.isExtensionHidden = false
+        panel.beginSheetModal(for: self.view.window!) { response in
+            if let url = panel.url, response == .OK {
+                try? content.joined(separator: "\n").write(to: url, atomically: true, encoding: .utf8)
+            }
+        }
+    }
 
     // MARK: Content
     private func updateContent() {
@@ -113,6 +132,8 @@ extension ViewController: NSMenuItemValidation {
         switch menuItem.action {
         case #selector(removeSelectedItem(sender:)):
             return tableView.selectedRow >= 0
+        case #selector(exportAsCSV(sender:)):
+            return true
         default:
             return false
         }

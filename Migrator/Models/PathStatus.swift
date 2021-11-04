@@ -37,4 +37,19 @@ class PathStatus: NSObject {
     // MARK: Properties
     let badge: Badge
     let code: Int
+    
+    // MARK: CSV
+    var csvStatus: String {
+        let csvBadge: String
+        switch badge {
+        case .success:
+            csvBadge = "OK"
+        case .warning:
+            csvBadge = "REDIRECTION"
+        case .error:
+            csvBadge = "ERROR"
+        }
+        
+        return csvBadge + " - " + String(code)
+    }
 }
