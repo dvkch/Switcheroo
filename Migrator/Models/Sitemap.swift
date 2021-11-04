@@ -33,10 +33,11 @@ class Sitemap: NSDocument {
         switch typeName {
         case "public.xml":
             let document = try XMLDocument(data: data)
-            let nodes = try document.nodes(forXPath: "/urlset/url/loc")
-            urls = nodes.compactMap(\.stringValue).compactMap { URL(string: $0) }
-            urls = Array(Set(urls.map(\.withoutQuery))).sorted()
-
+            let nodes = try document.nodes(forXPath: "/urlset/url")
+            items = nodes.compactMap { SitemapItem(node: $0) }
+            items = Array(Set(items)).sorted().reversed()
+            domain = try document.nodes(forXPath: "/urlset/@domain").first?.stringValue
+            
             isTransient = false
 
         default:
@@ -45,7 +46,17 @@ class Sitemap: NSDocument {
     }
 
     override func data(ofType typeName: String) throws -> Data {
-        throw AppError.noSaveSupport
+        switch typeName {
+        case "public.xml":
+            let nodes = items.map(\.asNode)
+            let attributes = [XMLNode.attribute(withName: "domain", stringValue: domain ?? "") as! XMLNode]
+            let root = XMLElement.element(name: "urlset", children: nodes, attributes: attributes)
+            let document = XMLDocument.document(withRootElement: root) as! XMLDocument
+            return document.xmlData(options: .nodePrettyPrint)
+
+        default:
+            throw AppError.invalidFileType
+        }
     }
 
     
@@ -53,13 +64,24 @@ class Sitemap: NSDocument {
     private(set) var isTransient: Bool = false
     weak var contentViewController: ViewController?
 
-    private(set) var urls: [URL] = []
+    private var items: [SitemapItem] = []
     private var statuses: [URL: PathStatus] = [:]
 
     var isEmpty: Bool {
-        return urls.isEmpty
+        return items.isEmpty
+    }
+    
+    var urls: [URL] {
+        return items.map { $0.location }
     }
 
+    var percentOfDeterminedStatuses: Double {
+        guard !isEmpty else { return 0 }
+        return Double(statuses.count) / Double(items.count)
+    }
+    
+    private(set) var domain: String?
+    
     // MARK: Status
     func clearStatuses() {
         statuses = [:]

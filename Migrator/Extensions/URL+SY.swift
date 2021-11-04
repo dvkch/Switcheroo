@@ -28,12 +28,6 @@ extension URL {
     }
 }
 
-extension URL: Comparable {
-    public static func < (lhs: URL, rhs: URL) -> Bool {
-        return lhs.absoluteURL.absoluteString < rhs.absoluteURL.absoluteString
-    }
-}
-
 extension URLQueryItem {
     var urlValue: String {
         let name = self.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
