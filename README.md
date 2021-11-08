@@ -15,10 +15,13 @@ Currently supported features:
 - enter your new website's temporary domain
 - check the status of all page paths
 - export the status for each path as a CSV file
+- show redirections
+- double click on a line to open the tested URL
 
 Planned features, if time permits:
 
 - localize the app in FR and EN
+- automatic updates
 
 ## Disclaimer
 
