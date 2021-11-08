@@ -26,6 +26,14 @@ class PathCell: NSTableCellView {
 
     // MARK: Content
     private func updateContent() {
-        textView.stringValue = (objectValue as? String) ?? ""
+        guard let value = objectValue as? SitemapItem else { return }
+        
+        let text = NSMutableAttributedString(string: value.location.pathWithQuery, attributes: [.font: textView.font!, .foregroundColor: NSColor.labelColor])
+        if let redirection = value.status?.redirect {
+            let subtitle = NSMutableAttributedString(string: "\n→  " + redirection.pathWithQuery, attributes: [.font: textView.font!, .foregroundColor: NSColor.secondaryLabelColor])
+            text.append(subtitle)
+        }
+        
+        textView.attributedStringValue = text
     }
 }

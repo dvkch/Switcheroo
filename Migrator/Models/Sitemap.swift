@@ -63,36 +63,27 @@ class Sitemap: NSDocument {
     // MARK: Properties
     private(set) var isTransient: Bool = false
     weak var contentViewController: ViewController?
-
-    private var items: [SitemapItem] = []
-    private var statuses: [URL: PathStatus] = [:]
+    private(set) var items: [SitemapItem] = []
 
     var isEmpty: Bool {
         return items.isEmpty
     }
     
-    var urls: [URL] {
-        return items.map { $0.location }
-    }
-
     var percentOfDeterminedStatuses: Double {
         guard !isEmpty else { return 0 }
-        return Double(statuses.count) / Double(items.count)
+        return Double(items.compactMap(\.status).count) / Double(items.count)
     }
     
     private(set) var domain: String?
     
     // MARK: Status
     func clearStatuses() {
-        statuses = [:]
-    }
-    
-    func status(for url: URL) -> PathStatus? {
-        return statuses[url]
+        (0..<items.count).forEach { items[$0].status = nil }
     }
     
     func setStatus(_ status: PathStatus, for url: URL) {
-        statuses[url] = status
+        guard let index = items.firstIndex(where: { $0.location == url }) else { return }
+        items[index].status = status
     }
     
     // MARK: Modifications

@@ -11,14 +11,15 @@ import Foundation
 class PathStatus: NSObject {
     
     // MARK: Init
-    init(badge: Badge, code: Int) {
-        self.badge = badge
-        self.code = code
-        super.init()
-    }
-    
-    init(response: HTTPURLResponse?, error: Error?) {
+    init(originalURL: URL, response: HTTPURLResponse?, redirect: HTTPURLResponse?, error: Error?) {
         self.code = response?.statusCode ?? 0
+
+        // save intermediate URL if:
+        // - there was a redirect
+        // - the redirect changed the path (this part is to ignore redirects like /contact -> /contact/)
+        self.redirect = (redirect != nil && originalURL.pathComponents != response?.url?.pathComponents) ? response?.url : nil
+        self.redirectCode = self.redirect == nil ? nil : redirect?.statusCode
+
         switch code {
         case 100..<300:
             badge = .success
@@ -37,6 +38,8 @@ class PathStatus: NSObject {
     // MARK: Properties
     let badge: Badge
     let code: Int
+    let redirect: URL?
+    let redirectCode: Int?
     
     // MARK: CSV
     var csvStatus: String {

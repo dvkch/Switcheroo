@@ -29,13 +29,13 @@ class StatusCell: NSTableCellView {
 
     // MARK: Content
     private func updateContent() {
-        guard let value = objectValue as? PathStatus else {
+        guard let value = objectValue as? SitemapItem, let status = value.status else {
             badgeView.layer?.backgroundColor = NSColor.systemGray.cgColor
             textView.stringValue = "N/A"
             return
         }
         
-        switch value.badge {
+        switch status.badge {
         case .success:
             badgeView.layer?.backgroundColor = NSColor.systemGreen.cgColor
 
@@ -46,6 +46,12 @@ class StatusCell: NSTableCellView {
             badgeView.layer?.backgroundColor = NSColor.systemRed.cgColor
         }
         
-        textView.stringValue = String(value.code)
+        let text = NSMutableAttributedString(string: String(status.code), attributes: [.font: textView.font!, .foregroundColor: NSColor.labelColor])
+        if let redirection = value.status?.redirectCode {
+            let subtitle = NSMutableAttributedString(string: "\n" + String(redirection), attributes: [.font: textView.font!, .foregroundColor: NSColor.secondaryLabelColor])
+            text.append(subtitle)
+        }
+
+        textView.attributedStringValue = text
     }
 }

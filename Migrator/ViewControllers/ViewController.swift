@@ -69,7 +69,7 @@ class ViewController: NSViewController {
         sitemap.clearStatuses()
         updateContent()
 
-        statusController = StatusController(urls: sitemap.urls, scheme: scheme, host: host, delegate: self)
+        statusController = StatusController(urls: sitemap.items.map(\.location), scheme: scheme, host: host, delegate: self)
         statusController?.start()
         progressView.doubleValue = 0
     }
@@ -91,8 +91,8 @@ class ViewController: NSViewController {
     @IBAction private func exportAsCSV(sender: AnyObject?) {
         var content = [String]()
         content.append("Path;Status")
-        sitemap.urls.forEach { url in
-            content.append("\(url.pathWithQuery);\(sitemap.status(for: url)?.csvStatus ?? "")")
+        sitemap.items.forEach { item in
+            content.append("\(item.location.pathWithQuery);\(item.status?.csvStatus ?? "")")
         }
         
         let panel = NSSavePanel()
@@ -117,7 +117,7 @@ class ViewController: NSViewController {
         let selectedRow = tableView.selectedRow
         tableView.reloadData()
         
-        if selectedRow >= 0 && selectedRow < sitemap.urls.count {
+        if selectedRow >= 0 && selectedRow < sitemap.items.count {
             tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
         }
     }
@@ -145,8 +145,8 @@ extension ViewController: StatusControllerDelegate {
         sitemap.setStatus(status, for: url)
         progressView.doubleValue = sitemap.percentOfDeterminedStatuses * 100
         
-        if let index = sitemap.urls.firstIndex(of: url) {
-            tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 1))
+        if let index = sitemap.items.firstIndex(where: { $0.location ==  url}) {
+            tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet([0, 1]))
         }
     }
 
@@ -157,7 +157,7 @@ extension ViewController: StatusControllerDelegate {
 
 extension ViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return sitemap.urls.count
+        return sitemap.items.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -174,18 +174,7 @@ extension ViewController: NSTableViewDataSource {
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        let url = sitemap.urls[row]
-
-        switch tableColumn?.identifier.rawValue {
-        case "path":
-            return url.pathWithQuery
-            
-        case "status":
-            return sitemap.status(for: url)
-            
-        default:
-            return nil
-        }
+        return sitemap.items[row]
     }
 }
 

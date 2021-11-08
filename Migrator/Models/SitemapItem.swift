@@ -14,6 +14,9 @@ struct SitemapItem {
     let lastModification: String?
     let priority: Double
     
+    // MARK: Status
+    var status: PathStatus?
+    
     // MARK: Coding
     enum CodingKeys: String, CodingKey {
         case location = "loc"
