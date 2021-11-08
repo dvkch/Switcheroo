@@ -80,11 +80,12 @@ class ViewController: NSViewController {
         sitemap.removeItem(at: removedIndex)
         tableView.removeRows(at: IndexSet(integer: removedIndex), withAnimation: .slideUp)
 
-        if removedIndex - 1 >= 0 && tableView.numberOfRows > 0 {
-            tableView.selectRowIndexes(IndexSet(integer: removedIndex - 1), byExtendingSelection: false)
-        }
-        else if tableView.numberOfRows > 0 {
+        guard tableView.numberOfRows > 0 else { return }
+        if (0..<sitemap.items.count).contains(removedIndex) {
             tableView.selectRowIndexes(IndexSet(integer: removedIndex), byExtendingSelection: false)
+        }
+        else if (0..<sitemap.items.count).contains(removedIndex - 1) {
+            tableView.selectRowIndexes(IndexSet(integer: removedIndex - 1), byExtendingSelection: false)
         }
     }
     
