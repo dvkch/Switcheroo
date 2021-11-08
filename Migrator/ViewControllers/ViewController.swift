@@ -41,11 +41,6 @@ class ViewController: NSViewController {
     @IBOutlet private var tableView: NSTableView!
 
     // MARK: Actions
-    @IBAction private func textfieldDidReturn(sender: AnyObject?) {
-        guard !hostTextField.stringValue.isEmpty else { return }
-        startButtonTap(sender: sender)
-    }
-
     @IBAction private func startButtonTap(sender: AnyObject?) {
         if statusController != nil {
             statusController?.stop()
@@ -138,6 +133,16 @@ extension ViewController: NSMenuItemValidation {
         default:
             return false
         }
+    }
+}
+
+extension ViewController: NSTextFieldDelegate {
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        if commandSelector == #selector(insertNewline(_:)), !hostTextField.stringValue.isEmpty {
+            startButtonTap(sender: textView)
+            return true
+        }
+        return false
     }
 }
 

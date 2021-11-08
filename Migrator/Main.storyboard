@@ -282,7 +282,7 @@ CA
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="textfieldDidReturnWithSender:" target="5gI-5U-AMq" id="VxA-K7-eM3"/>
+                                    <outlet property="delegate" destination="5gI-5U-AMq" id="gwS-EG-0xW"/>
                                 </connections>
                             </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFm-T7-vYW">
