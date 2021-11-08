@@ -385,6 +385,7 @@ CA
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="doubleClickedRowWithSender:" target="2Tp-Fl-jBw" id="k9G-sZ-vKD"/>
                                                 <outlet property="dataSource" destination="5gI-5U-AMq" id="1zx-Ql-Ceb"/>
                                                 <outlet property="delegate" destination="5gI-5U-AMq" id="454-Ey-mg2"/>
                                             </connections>

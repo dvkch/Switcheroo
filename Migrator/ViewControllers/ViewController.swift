@@ -84,6 +84,14 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction private func doubleClickedRow(sender: AnyObject?) {
+        guard tableView.clickedRow >= 0 else { return }
+        let originalURL = sitemap.items[tableView.clickedRow].location
+
+        guard let domain = sitemap.domain, let domainURL = URL(string: domain), let modifiedURL = URL(string: originalURL.pathWithQuery, relativeTo: domainURL) else { return }
+        NSWorkspace.shared.open(modifiedURL)
+    }
+    
     @IBAction private func exportAsCSV(sender: AnyObject?) {
         var content = [String]()
         content.append("Path;Status")
