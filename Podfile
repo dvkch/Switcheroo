@@ -1,7 +1,7 @@
 inhibit_all_warnings!
 use_frameworks!
 
-target "Migrator" do
+target "Switcheroo" do
     platform :osx, "10.13"
     pod 'SnapKit'
 end

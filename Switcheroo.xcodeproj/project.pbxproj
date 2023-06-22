@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		637B42BD723B6BB1536EEA42 /* Pods_Switcheroo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECAEE6C140EF786FA49BB339 /* Pods_Switcheroo.framework */; };
+		97491F2427340EDF00BB8E73 /* SitemapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97491F2327340EDF00BB8E73 /* SitemapItem.swift */; };
+		97491F26273412E200BB8E73 /* XMLElement+SY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97491F25273412E200BB8E73 /* XMLElement+SY.swift */; };
+		974FDD1A2734095E00232952 /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD0D2734095E00232952 /* DocumentController.swift */; };
+		974FDD1B2734095E00232952 /* StatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD0E2734095E00232952 /* StatusController.swift */; };
+		974FDD1C2734095E00232952 /* URL+SY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD102734095E00232952 /* URL+SY.swift */; };
+		974FDD1D2734095E00232952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD122734095E00232952 /* ViewController.swift */; };
+		974FDD1E2734095E00232952 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD142734095E00232952 /* StatusCell.swift */; };
+		974FDD1F2734095E00232952 /* PathCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD152734095E00232952 /* PathCell.swift */; };
+		974FDD202734095E00232952 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD172734095E00232952 /* AppError.swift */; };
+		974FDD212734095E00232952 /* PathStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD182734095E00232952 /* PathStatus.swift */; };
+		974FDD222734095E00232952 /* Sitemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FDD192734095E00232952 /* Sitemap.swift */; };
+		974FDD262734097700232952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FDD242734097700232952 /* Main.storyboard */; };
+		97DACE9F273408BB0032D767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DACE9E273408BB0032D767 /* AppDelegate.swift */; };
+		97DACEA5273408BD0032D767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97DACEA4273408BD0032D767 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D6F7A853D9BD6F5AAF5EFE0 /* Pods-Switcheroo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switcheroo.release.xcconfig"; path = "Target Support Files/Pods-Switcheroo/Pods-Switcheroo.release.xcconfig"; sourceTree = "<group>"; };
+		97491F2327340EDF00BB8E73 /* SitemapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitemapItem.swift; sourceTree = "<group>"; };
+		97491F25273412E200BB8E73 /* XMLElement+SY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLElement+SY.swift"; sourceTree = "<group>"; };
+		974FDD0D2734095E00232952 /* DocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
+		974FDD0E2734095E00232952 /* StatusController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusController.swift; sourceTree = "<group>"; };
+		974FDD102734095E00232952 /* URL+SY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+SY.swift"; sourceTree = "<group>"; };
+		974FDD122734095E00232952 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		974FDD142734095E00232952 /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		974FDD152734095E00232952 /* PathCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathCell.swift; sourceTree = "<group>"; };
+		974FDD172734095E00232952 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		974FDD182734095E00232952 /* PathStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathStatus.swift; sourceTree = "<group>"; };
+		974FDD192734095E00232952 /* Sitemap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sitemap.swift; sourceTree = "<group>"; };
+		974FDD242734097700232952 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		97DACE9B273408BB0032D767 /* Switcheroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switcheroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97DACE9E273408BB0032D767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97DACEA4273408BD0032D767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97DACEA9273408BD0032D767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97DACEAA273408BD0032D767 /* Migrator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Migrator.entitlements; sourceTree = "<group>"; };
+		B4FC84E612BD02A216603941 /* Pods-Switcheroo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switcheroo.debug.xcconfig"; path = "Target Support Files/Pods-Switcheroo/Pods-Switcheroo.debug.xcconfig"; sourceTree = "<group>"; };
+		ECAEE6C140EF786FA49BB339 /* Pods_Switcheroo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switcheroo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97DACE98273408BB0032D767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				637B42BD723B6BB1536EEA42 /* Pods_Switcheroo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19F18E8AE59F205F601CF610 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4FC84E612BD02A216603941 /* Pods-Switcheroo.debug.xcconfig */,
+				0D6F7A853D9BD6F5AAF5EFE0 /* Pods-Switcheroo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		974FDD0C2734095E00232952 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD0D2734095E00232952 /* DocumentController.swift */,
+				974FDD0E2734095E00232952 /* StatusController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		974FDD0F2734095E00232952 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD102734095E00232952 /* URL+SY.swift */,
+				97491F25273412E200BB8E73 /* XMLElement+SY.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		974FDD112734095E00232952 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD122734095E00232952 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		974FDD132734095E00232952 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD152734095E00232952 /* PathCell.swift */,
+				974FDD142734095E00232952 /* StatusCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		974FDD162734095E00232952 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD172734095E00232952 /* AppError.swift */,
+				974FDD182734095E00232952 /* PathStatus.swift */,
+				974FDD192734095E00232952 /* Sitemap.swift */,
+				97491F2327340EDF00BB8E73 /* SitemapItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97DACE92273408BB0032D767 = {
+			isa = PBXGroup;
+			children = (
+				97DACE9D273408BB0032D767 /* Switcheroo */,
+				97DACE9C273408BB0032D767 /* Products */,
+				19F18E8AE59F205F601CF610 /* Pods */,
+				C2C2315941F34EA2E901F88B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		97DACE9C273408BB0032D767 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97DACE9B273408BB0032D767 /* Switcheroo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97DACE9D273408BB0032D767 /* Switcheroo */ = {
+			isa = PBXGroup;
+			children = (
+				974FDD0F2734095E00232952 /* Extensions */,
+				974FDD0C2734095E00232952 /* Controllers */,
+				974FDD162734095E00232952 /* Models */,
+				974FDD132734095E00232952 /* Views */,
+				974FDD112734095E00232952 /* ViewControllers */,
+				97DACE9E273408BB0032D767 /* AppDelegate.swift */,
+				974FDD242734097700232952 /* Main.storyboard */,
+				97DACEA4273408BD0032D767 /* Assets.xcassets */,
+				97DACEA9273408BD0032D767 /* Info.plist */,
+				97DACEAA273408BD0032D767 /* Migrator.entitlements */,
+			);
+			path = Switcheroo;
+			sourceTree = "<group>";
+		};
+		C2C2315941F34EA2E901F88B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECAEE6C140EF786FA49BB339 /* Pods_Switcheroo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97DACE9A273408BB0032D767 /* Switcheroo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97DACEAD273408BD0032D767 /* Build configuration list for PBXNativeTarget "Switcheroo" */;
+			buildPhases = (
+				B0AFFBD8F9ABA1F211653902 /* [CP] Check Pods Manifest.lock */,
+				97DACE97273408BB0032D767 /* Sources */,
+				97DACE98273408BB0032D767 /* Frameworks */,
+				97DACE99273408BB0032D767 /* Resources */,
+				81FD4BD9D6EDDAC601C83CA6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Switcheroo;
+			productName = Switcheroo;
+			productReference = 97DACE9B273408BB0032D767 /* Switcheroo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97DACE93273408BB0032D767 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					97DACE9A273408BB0032D767 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 97DACE96273408BB0032D767 /* Build configuration list for PBXProject "Switcheroo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97DACE92273408BB0032D767;
+			productRefGroup = 97DACE9C273408BB0032D767 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97DACE9A273408BB0032D767 /* Switcheroo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97DACE99273408BB0032D767 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				974FDD262734097700232952 /* Main.storyboard in Resources */,
+				97DACEA5273408BD0032D767 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81FD4BD9D6EDDAC601C83CA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Switcheroo/Pods-Switcheroo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Switcheroo/Pods-Switcheroo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Switcheroo/Pods-Switcheroo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0AFFBD8F9ABA1F211653902 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Switcheroo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97DACE97273408BB0032D767 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97491F2427340EDF00BB8E73 /* SitemapItem.swift in Sources */,
+				97DACE9F273408BB0032D767 /* AppDelegate.swift in Sources */,
+				974FDD202734095E00232952 /* AppError.swift in Sources */,
+				974FDD222734095E00232952 /* Sitemap.swift in Sources */,
+				974FDD1A2734095E00232952 /* DocumentController.swift in Sources */,
+				974FDD1C2734095E00232952 /* URL+SY.swift in Sources */,
+				974FDD1F2734095E00232952 /* PathCell.swift in Sources */,
+				974FDD1D2734095E00232952 /* ViewController.swift in Sources */,
+				974FDD1B2734095E00232952 /* StatusController.swift in Sources */,
+				97491F26273412E200BB8E73 /* XMLElement+SY.swift in Sources */,
+				974FDD212734095E00232952 /* PathStatus.swift in Sources */,
+				974FDD1E2734095E00232952 /* StatusCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		97DACEAB273408BD0032D767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		97DACEAC273408BD0032D767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		97DACEAE273408BD0032D767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4FC84E612BD02A216603941 /* Pods-Switcheroo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Switcheroo/Switcheroo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 79RY8264V4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Switcheroo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = me.syan.Migrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		97DACEAF273408BD0032D767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6F7A853D9BD6F5AAF5EFE0 /* Pods-Switcheroo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Switcheroo/Switcheroo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 79RY8264V4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Switcheroo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = me.syan.Migrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97DACE96273408BB0032D767 /* Build configuration list for PBXProject "Switcheroo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97DACEAB273408BD0032D767 /* Debug */,
+				97DACEAC273408BD0032D767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97DACEAD273408BD0032D767 /* Build configuration list for PBXNativeTarget "Switcheroo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97DACEAE273408BD0032D767 /* Debug */,
+				97DACEAF273408BD0032D767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97DACE93273408BB0032D767 /* Project object */;
+}
