@@ -1,6 +1,6 @@
 <img src="Resources/README-AppIcon.png" width=64 />
 
-# Migrator
+# Switcheroo
 
 Quick and dirty native macOS app that will check a website's `sitemap.xml` against a new domain.
 
